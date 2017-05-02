@@ -1,0 +1,7 @@
+{
+"version" : "001",
+"data" : [
+    {"key" : ".daemon.rs.web.port", "data" : "80", "validation" : "x < 1024"},
+    {"key" : ".core.ip",            "data" : "192.168.1.1" }
+]
+}
