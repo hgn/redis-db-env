@@ -25,6 +25,9 @@ for entry in data['data']:
         redis_db.set("{}.meta.date-added",    "2016-01-01.011")
         redis_db.set("{}.meta.last-modified", "2017-01-01.011")
 
+        if data['validation']:
+            redis_db.set("{}.meta.validation", data['validation'])
+
 
 while True:
     # validation phase
@@ -42,15 +45,3 @@ sys.exit(0)
 redis_db.set('full stack', 'python')
 redis_db.keys()
 
-# now we have one key so the output will be "[b'full stack']"
-redis_db.get('full stack')
-# output is "b'python'", the key and value still exist in Redis
-redis_db.incr('twilio')
-# output is "1", we just incremented even though the key did not
-# previously exist
-redis_db.get('twilio')
-# output is "b'1'" again, since we just obtained the value from
-# the existing key
-redis_db.delete('twilio')
-# output is "1" because the command was successful
-redis_db.get('twilio')
